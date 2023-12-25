@@ -1,0 +1,106 @@
+.film-detail-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.film-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.film-image {
+    flex: 1;
+    max-width: 50%;
+    height: auto;
+}
+
+.film-info {
+    flex: 2;
+    position: relative;
+}
+
+.comment {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.comment-info {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-content {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.replies {
+    margin-top: 10px;
+}
+
+.reply {
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.reply-info {
+    margin: 0;
+    color: #555;
+    font-size: 12px;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.reply-content {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.notification {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px; /* 调整通知框的内边距 */
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
