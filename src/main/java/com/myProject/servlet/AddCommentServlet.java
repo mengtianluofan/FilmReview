@@ -42,6 +42,11 @@ public class AddCommentServlet extends HttpServlet {
 
         int fid = Integer.parseInt(request.getParameter("fid"));
         String content = request.getParameter("content");
+        if (content == null || content.trim().length() == 0) {
+            request.setAttribute("message", "评论内容不能为空");
+            response.sendRedirect("filmDetail?fid=" + fid);
+            return;
+        }
         int parentId = Integer.parseInt(request.getParameter("parentId"));
 
         Comment comment = new Comment(0, fid, user.getUid(), content, parentId, new Timestamp(new Date().getTime()));

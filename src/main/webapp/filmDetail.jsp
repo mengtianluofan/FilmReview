@@ -46,6 +46,34 @@
             xhr.send();
         }
 
+        function submitComment() {
+            var commentContent = document.getElementById('commentContent').value;
+            if (!commentContent.trim()) {
+                showMessage('评论内容不能为空！');
+                return false; // 阻止表单提交
+            }
+            return true; // 允许表单提交
+        }
+
+        function showMessage(message) {
+            var errorMessage = document.getElementById('errorMessage');
+            errorMessage.innerText = message;
+
+            // 显示错误消息
+            errorMessage.style.opacity = 1;
+            errorMessage.style.display = 'block';
+
+            // 定位错误消息到评论框旁边
+            var commentInput = document.getElementById(inputId);
+            errorMessage.style.top = commentInput.offsetTop + 'px';
+            errorMessage.style.left = (commentInput.offsetLeft + commentInput.offsetWidth + 10) + 'px';
+
+            // 在两秒后触发淡出效果
+            setTimeout(function () {
+                fadeOut(errorMessage);
+            }, 2000);
+        }
+
         function fadeOut(element) {
             var opacity = 1;
             var interval = setInterval(function () {
@@ -113,14 +141,16 @@
 
     <c:if test="${user ne null}">
         <div class="comment-form">
-            <form action="addComment" method="post">
+            <form action="addComment" method="post" onsubmit="return submitComment()">
                 <input type="hidden" name="fid" value="${film.fid}">
                 <input type="hidden" name="parentId" value=0>
-                <textarea name="content" rows="4" cols="50" placeholder="发表评论"></textarea>
+                <textarea id="commentContent" name="content" rows="4" cols="50" placeholder="发表评论"></textarea>
                 <button type="submit">发表评论</button>
             </form>
+            <div id="errorMessage" class="notification" style="display: none;"></div>
         </div>
     </c:if>
+
 </div>
 </body>
 </html>
