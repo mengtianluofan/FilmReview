@@ -86,7 +86,7 @@
 
     <form action="updateFilm" method="post" enctype="multipart/form-data">
         <input type="hidden" name="fid" value="${film.fid}">
-        <h2>影视名：<input type="text" name="director" value="${film.fname}" required></h2>
+        <h2>影视名：<input type="text" name="fname" value="${film.fname}" required></h2>
         <p>导演：<input type="text" name="director" value="${film.director}"></p>
         <p>上映日期：<input type="text" name="releaseYear" value="${film.releaseYear}"></p>
         <p>影视概述：<textarea name="finfo" rows="4" cols="50">${film.finfo}</textarea></p>

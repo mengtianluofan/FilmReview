@@ -11,9 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 /**
@@ -56,6 +57,7 @@ public class UpdateFilm extends HttpServlet {
     }
 
     private void updateFilm(HttpServletRequest request, HttpServletResponse response, int fid) throws ServletException, IOException {
+        String fname = request.getParameter("fname");
         String director = request.getParameter("director");
         int releaseYear = Integer.parseInt(request.getParameter("releaseYear"));
         String finfo = request.getParameter("finfo");
@@ -67,6 +69,7 @@ public class UpdateFilm extends HttpServlet {
         // 更新电影信息
         FilmDao filmDao = new FilmDao();
         Film newFilm = filmDao.getFilmByFid(fid);
+        newFilm.setFname(fname);
         newFilm.setDirector(director);
         newFilm.setReleaseYear(releaseYear);
         newFilm.setFinfo(finfo);

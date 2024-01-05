@@ -157,10 +157,9 @@ public class CommentDao {
         try {
             conn = DaoUtil.getConnection();
             String sql = "{call DeleteComment(?)}";  // 存储过程调用语法
-            try (CallableStatement cstmt = conn.prepareCall(sql)) {
-                cstmt.setInt(1, cid);
-                cstmt.execute();
-            }
+            CallableStatement cstmt = conn.prepareCall(sql);
+            cstmt.setInt(1, cid);
+            cstmt.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

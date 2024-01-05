@@ -1,11 +1,8 @@
 package com.myProject.servlet;
 
-import com.myProject.dao.FilmLikeDao;
 import com.myProject.dao.UserDao;
-import com.myProject.entity.FilmLike;
 import com.myProject.entity.User;
 import com.myProject.entity.UserInfo;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +12,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @author mengtianluofan
@@ -44,6 +40,13 @@ public class LoginServlet extends HttpServlet {
         String role = request.getParameter("role");
         if (id == null || id.equals("") || password == null || password.equals("")) {
             String message = "用户名或密码不能为空！！！   请重试！！！";
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
+        if (!id.matches("[0-9]+")) {
+            String message = "用户名或密码错误！！！   请重试！！！";
             request.setAttribute("message", message);
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
