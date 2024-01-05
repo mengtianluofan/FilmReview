@@ -60,11 +60,11 @@
     <form action="register" method="post">
         <div>
             <label for="username">用户名：</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" required>
         </div>
         <div>
             <label for="password">密码：</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required>
         </div>
         <div>
             <input type="submit" value="注册">
